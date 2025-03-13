@@ -1,0 +1,126 @@
+/* Dark Theme + Glassmorphism */
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('../images/bg.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+}
+
+/* Centering the Form Box */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Glassmorphism Form Box */
+.form-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 350px;
+}
+
+/* Title */
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Toggle Button */
+.toggle-text {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+#toggle-btn {
+    color: #00c8ff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#toggle-btn:hover {
+    text-decoration: underline;
+}
+
+/* Input Fields */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Forgot Password */
+.forgot-password {
+    margin-bottom: 15px;
+}
+
+.forgot-password a {
+    color: #00c8ff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Submit Button */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #00c8ff;
+    color: black;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #009acb;
+}
+
+/* Social Login */
+.social-text {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+}
+
+.social-icons img {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}

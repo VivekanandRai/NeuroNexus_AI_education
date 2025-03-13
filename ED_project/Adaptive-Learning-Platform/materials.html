@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Materials | AI Learning</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="js/scripts.js"></script>
+</head>
+<body>
+
+    <!-- 🔹 Navbar -->
+    <nav class="navbar">
+        <div class="logo">AI Learn</div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="quiz.html">Take a Quiz</a></li>
+            <li><a href="progress.html">Progress</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
+
+    <!-- 🔹 Study Materials Section -->
+    <section class="materials-container">
+        <h1>📚 AI-Recommended Study Materials</h1>
+
+        <!-- 🔹 Search Bar -->
+        <input type="text" id="searchBar" placeholder="🔍 Search for topics..." onkeyup="filterMaterials()">
+
+        <!-- 🔹 Dynamic Material Cards -->
+        <div id="materials-list">
+            <div class="material-card" data-topic="Algebra">
+                <h2>🔢 Algebra Basics</h2>
+                <p>Recommended Video Lecture & Practice Set.</p>
+                <button class="download-btn">Download PDF</button>
+            </div>
+
+            <div class="material-card" data-topic="Physics">
+                <h2>⚡ Physics Concepts</h2>
+                <p>Interactive Video & Notes.</p>
+                <button class="download-btn">Download PDF</button>
+            </div>
+
+            <div class="material-card" data-topic="Data Structures">
+                <h2>📂 Data Structures</h2>
+                <p>Practice Sets & AI Quiz.</p>
+                <button class="download-btn">Download PDF</button>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

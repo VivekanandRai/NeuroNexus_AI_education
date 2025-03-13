@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Dashboard | AI Learning</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js for Graphs -->
+</head>
+<body>
+
+    <!-- 🔹 Navbar -->
+    <nav class="navbar">
+        <div class="logo">AI Learn</div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="quiz.html">Take a Quiz</a></li>
+            <li><a href="materials.html">Study Materials</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
+
+    <!-- 🔹 Progress Section -->
+    <section class="progress-container">
+        <h1>📈 AI-Powered Progress Insights</h1>
+
+        <!-- 🔹 Progress Chart -->
+        <div class="chart-container">
+            <canvas id="progressChart"></canvas>
+        </div>
+
+        <!-- 🔹 Weak Areas & Study Suggestions -->
+        <div class="weak-areas">
+            <h2>📌 Areas to Improve</h2>
+            <ul id="weak-topics">
+                <li>Loading insights...</li>
+            </ul>
+        </div>
+
+        <!-- 🔹 Achievements & Badges -->
+        <div class="achievements">
+            <h2>🏆 Achievements</h2>
+            <div class="badge-container">
+                <div class="badge">Beginner</div>
+                <div class="badge">Quiz Master</div>
+                <div class="badge">AI Learner</div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

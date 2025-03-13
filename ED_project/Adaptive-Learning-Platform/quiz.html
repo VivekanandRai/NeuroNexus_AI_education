@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Adaptive Quiz | AI Learning</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="js/scripts.js"></script>
+</head>
+<body>
+
+    <!-- 🔹 Navbar -->
+    <nav class="navbar">
+        <div class="logo">AI Learn</div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="progress.html">Progress</a></li>
+            <li><a href="materials.html">Study Materials</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
+
+    <!-- 🔹 Quiz Section -->
+    <section class="quiz-container">
+        <h1>📚 AI Adaptive Quiz</h1>
+        <div class="quiz-box">
+            <p id="quiz-question">Loading question...</p>
+            <div class="options-container">
+                <button class="option-btn" onclick="selectOption(1)">Option 1</button>
+                <button class="option-btn" onclick="selectOption(2)">Option 2</button>
+                <button class="option-btn" onclick="selectOption(3)">Option 3</button>
+                <button class="option-btn" onclick="selectOption(4)">Option 4</button>
+            </div>
+        </div>
+
+        <!-- 🔹 Live Feedback Section -->
+        <div class="feedback-container">
+            <h3>📌 Live Feedback</h3>
+            <p id="feedback-text">Your answer analysis will appear here...</p>
+            <p id="study-suggestion"></p>
+        </div>
+
+        <!-- 🔹 Timer -->
+        <div class="timer">
+            ⏳ Time Left: <span id="timer">30</span> sec
+        </div>
+    </section>
+
+</body>
+</html>

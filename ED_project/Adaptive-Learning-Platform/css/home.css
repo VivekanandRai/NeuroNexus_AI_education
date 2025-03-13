@@ -1,0 +1,159 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #121212;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url('../images/hero-bg.jpg') no-repeat center center/cover;
+}
+
+.hero-content h1 {
+    font-size: 50px;
+    background: -webkit-linear-gradient(white, cyan);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cta-btn {
+    background: #00c8ff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+}
+
+/* Features */
+.features {
+    padding: 60px;
+    text-align: center;
+}
+
+.features-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Testimonials */
+.testimonials {
+    padding: 50px;
+    text-align: center;
+}
+
+/* CTA */
+.cta {
+    background: #00c8ff;
+    text-align: center;
+    padding: 40px;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: black;
+}
+.feature-card img {
+    width: 100%;  /* Make images responsive */
+    max-width: 120px; /* Set a reasonable max width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra spacing */
+    margin: 0 auto; /* Center within card */
+}
+.testimonial img {
+    width: 80px;  /* Keep a uniform size */
+    height: 80px;
+    border-radius: 50%; /* Circular images */
+    object-fit: cover; /* Ensures image fills space properly */
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url('../images/hero-bg.jpg') no-repeat center center/cover;
+    background-size: cover;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Spacing between icons */
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Fixed size */
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: rgba(255, 255, 255, 0.3); /* Highlight effect */
+}
+
+.social-icons img {
+    width: 24px; /* Icon size */
+    height: 24px;
+}
+img {
+    max-width: 100%; /* Prevents images from overflowing */
+    height: auto; /* Maintains aspect ratio */
+    display: block;
+}
+
+

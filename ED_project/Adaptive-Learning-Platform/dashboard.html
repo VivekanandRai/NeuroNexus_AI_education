@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Student Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script defer src="js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js for graphs -->
+</head>
+<body>
+
+    <!-- 🔹 Sidebar (Profile & Navigation) -->
+    <aside class="sidebar">
+        <div class="profile-section">
+            <img src="images/student2.jpg" id="profile-pic" alt="Profile Picture">
+            <h2 id="student-name">John Doe</h2>
+            <p>Email: <span id="email">example@student.com</span></p>
+            <p>Learning Style: <span id="learning-style">Visual Learner</span></p>
+            <button onclick="editProfile()">✏️ Edit Profile</button>
+        </div>
+
+        <nav class="nav-links">
+            <a href="quiz.html">📚 Adaptive Quiz</a>
+            <a href="progress.html">📊 Progress Reports</a>
+            <a href="materials.html">📖 Study Materials</a>
+            <a href="tutor.html">🤖 AI Tutor</a>
+        </nav>
+    </aside>
+
+    <!-- 🔹 Main Dashboard Content -->
+    <main class="dashboard">
+        <!-- 🚀 Welcome & AI Learning Path -->
+        <section class="welcome">
+            <h1>Welcome, <span id="student-name-main">John Doe</span> 👋</h1>
+            <h3>🚀 AI-Powered Learning Path</h3>
+            <p id="learning-path">"Focus on Graph Algorithms & SQL Queries"</p>
+        </section>
+
+
+        <!-- 📊 Performance & Analytics -->
+        <section class="performance-overview">
+            <h2>📈 Performance Overview</h2>
+            <div class="chart-container">
+                <canvas id="progressChart"></canvas>
+            </div>
+        </section>
+        
+        <!-- Ensure Chart.js is loaded before your script -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="js/dashboard.js"></script>
+
+
+        <!-- 🎯 AI-Driven Recommendations -->
+        <section class="recommendations">
+            <h2>📌 Personalized Learning Suggestions</h2>
+            <ul id="recommendation-list">
+                <li>🔥 Focus on Dynamic Programming</li>
+                <li>📖 Revise SQL Joins & Queries</li>
+                <li>🎯 Take 3 Adaptive Quizzes this week</li>
+            </ul>
+        </section>
+
+        <!-- 🔥 Quick Actions -->
+        <section class="quick-actions">
+            <h2>🚀 Quick Actions</h2>
+            <button onclick="startQuiz()">🎯 Start Adaptive Quiz</button>
+            <button onclick="viewProgress()">📊 View Progress Reports</button>
+            <button onclick="openTutor()">🤖 AI Tutor for Doubts</button>
+        </section>
+    </main>
+
+</body>
+</html>

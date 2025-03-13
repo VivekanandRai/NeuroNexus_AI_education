@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Adaptive Learning</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-box">
+            <h2 id="form-title">Login</h2>
+
+            <!-- Toggle Between Login & Signup -->
+            <p class="toggle-text">
+                <span id="toggle-btn">Don't have an account? <strong>Sign Up</strong></span>
+            </p>
+
+            <form id="auth-form">
+                <div class="input-group">
+                    <input type="text" id="name" placeholder="Full Name" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+
+                <div class="input-group" id="grade-group">
+                    <input type="text" id="grade" placeholder="Grade (e.g., 10th, 12th)" required>
+                </div>
+
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button type="submit" id="submit-btn">Login</button>
+
+                <p class="social-text">Or continue with</p>
+                <div class="social-icons">
+                    <a href="#"><img src="images/google.png" alt="Google"></a>
+                    <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>
