@@ -3,45 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Adaptive Quiz | AI Learning</title>
+    <title>AI Adaptive Quiz</title>
     <link rel="stylesheet" href="css/styles.css">
     <script defer src="js/scripts.js"></script>
 </head>
 <body>
 
-    <!-- 🔹 Navbar -->
-    <nav class="navbar">
-        <div class="logo">AI Learn</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="progress.html">Progress</a></li>
-            <li><a href="materials.html">Study Materials</a></li>
-            <li><a href="profile.html">Profile</a></li>
-        </ul>
-    </nav>
+    <!-- Class Selection -->
+    <section id="class-selection">
+        <h2>Select Your Class</h2>
+        <button onclick="setClass(10)">Class 10</button>
+        <button onclick="setClass(11)">Class 11</button>
+        <button onclick="setClass(12)">Class 12</button>
+    </section>
 
-    <!-- 🔹 Quiz Section -->
-    <section class="quiz-container">
+    <!-- Difficulty Selection (Hidden Initially) -->
+    <section id="difficulty-selection" style="display:none;">
+        <h2>Select Difficulty Level</h2>
+        <button onclick="setDifficulty('Easy')">Easy</button>
+        <button onclick="setDifficulty('Medium')">Medium</button>
+        <button onclick="setDifficulty('Hard')">Hard</button>
+    </section>
+
+    <!-- Quiz Section (Hidden Initially) -->
+    <section id="quiz-container" style="display:none;">
         <h1>📚 AI Adaptive Quiz</h1>
         <div class="quiz-box">
             <p id="quiz-question">Loading question...</p>
             <div class="options-container">
-                <button class="option-btn" onclick="selectOption(1)">Option 1</button>
-                <button class="option-btn" onclick="selectOption(2)">Option 2</button>
-                <button class="option-btn" onclick="selectOption(3)">Option 3</button>
-                <button class="option-btn" onclick="selectOption(4)">Option 4</button>
+                <button class="option-btn" id="option1" onclick="checkAnswer(0)"></button>
+                <button class="option-btn" id="option2" onclick="checkAnswer(1)"></button>
+                <button class="option-btn" id="option3" onclick="checkAnswer(2)"></button>
+                <button class="option-btn" id="option4" onclick="checkAnswer(3)"></button>
             </div>
         </div>
 
-        <!-- 🔹 Live Feedback Section -->
-        <div class="feedback-container">
-            <h3>📌 Live Feedback</h3>
-            <p id="feedback-text">Your answer analysis will appear here...</p>
-            <p id="study-suggestion"></p>
-        </div>
+        <!-- Feedback -->
+        <p id="feedback-text"></p>
 
-        <!-- 🔹 Timer -->
+        <!-- Timer -->
         <div class="timer">
             ⏳ Time Left: <span id="timer">30</span> sec
         </div>
