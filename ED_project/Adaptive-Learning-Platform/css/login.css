@@ -8,6 +8,66 @@ body {
     height: 100vh;
     margin: 0;
     color: white;
+    animation: fadeIn 1s ease-in-out;
+}
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #121212; /* Track background color */
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #00c8ff; /* Scrollbar handle color */
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #0096cc; /* Darker color on hover */
+}
+/* Home Button */
+.home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.home-button i {
+    font-size: 18px;
+}
+
+.home-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* Centering the Form Box */
@@ -27,6 +87,19 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     text-align: center;
     width: 350px;
+    animation: slideUp 0.8s ease-out;
+}
+
+/* Form Box Slide-in Effect */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Title */
@@ -39,12 +112,26 @@ h2 {
 .toggle-text {
     font-size: 14px;
     margin-bottom: 15px;
+    transition: 0.3s ease-in-out;
 }
 
 #toggle-btn {
     color: #00c8ff;
     cursor: pointer;
     font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+#toggle-btn a {
+    color: #00c8ff;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+#toggle-btn a:hover {
+    color: white;
+    font-size: medium;
+    transform: scale(1.1);
 }
 
 #toggle-btn:hover {
@@ -54,6 +141,7 @@ h2 {
 /* Input Fields */
 .input-group {
     margin-bottom: 15px;
+    position: relative;
 }
 
 .input-group input {
@@ -65,10 +153,20 @@ h2 {
     color: white;
     font-size: 16px;
     outline: none;
+    transition: 0.3s ease-in-out;
 }
 
+/* Neon Glow Effect on Input Fields */
+.input-group input:focus {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px #00c8ff;
+    transform: scale(1.05);
+}
+
+/* Placeholder Styling */
 ::placeholder {
     color: rgba(255, 255, 255, 0.7);
+    transition: 0.3s ease-in-out;
 }
 
 /* Forgot Password */
@@ -80,10 +178,12 @@ h2 {
     color: #00c8ff;
     text-decoration: none;
     font-size: 14px;
+    transition: 0.3s;
 }
 
 .forgot-password a:hover {
     text-decoration: underline;
+    transform: scale(1.05);
 }
 
 /* Submit Button */
@@ -96,11 +196,16 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Button Glow Effect */
 button:hover {
     background: #009acb;
+    box-shadow: 0 0 10px #00c8ff, 0 0 20px #00c8ff;
+    transform: scale(1.05);
 }
 
 /* Social Login */
@@ -109,6 +214,7 @@ button:hover {
     font-size: 14px;
 }
 
+/* Social Icons Styling */
 .social-icons {
     display: flex;
     justify-content: center;
@@ -117,10 +223,27 @@ button:hover {
 
 .social-icons a {
     margin: 0 10px;
+    transition: 0.3s ease-in-out;
 }
 
-.social-icons img {
-    width: 32px;
-    height: 32px;
+/* Google & Facebook Icons */
+.social-icons .google {
+    width: 40px;
+    height: 40px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.social-icons .fb {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: 0.3s;
+}
+
+/* Hover Effect for Social Icons */
+.social-icons img:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 10px #00c8ff);
 }
