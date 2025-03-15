@@ -1,0 +1,166 @@
+/* 🔹 General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(-45deg, #ff4e50, #fc466b, #3f5efb, #1e1e1e);
+    background-size: 400% 400%;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    animation: gradientBG 10s ease infinite;
+}
+
+/* 🔹 Background Animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #121212; /* Track background color */
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #00c8ff; /* Scrollbar handle color */
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #0096cc; /* Darker color on hover */
+}
+/* Home Button */
+.home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.home-button i {
+    font-size: 18px;
+}
+
+.home-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+
+/* 🔹 Profile Container */
+.profile-container {
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    background: rgba(30, 30, 30, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.profile-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 198, 255, 0.7);
+}
+
+/* 🔹 Profile Card */
+.profile-card {
+    padding: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* 🔹 Profile Picture */
+.profile-pic {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid #00c6ff;
+    transition: transform 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+    border-color: #0094cc;
+}
+
+/* 🔹 Edit Button */
+.edit-btn {
+    background: linear-gradient(135deg, #00c6ff, #0094cc);
+    border: none;
+    padding: 12px 18px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 198, 255, 0.3);
+}
+
+.edit-btn:hover {
+    background: linear-gradient(135deg, #0094cc, #007bb5);
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 198, 255, 0.5);
+}
+
+/* 🔹 Achievements */
+.achievements {
+    margin-top: 25px;
+}
+
+.badges {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.badge {
+    padding: 12px 22px;
+    border-radius: 25px;
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.badge:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* 🔹 Badge Colors */
+.gold { background: gold; }
+.silver { background: silver; }
+.bronze { background: #cd7f32; }
+
+/* 🔹 Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
