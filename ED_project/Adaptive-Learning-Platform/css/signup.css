@@ -1,0 +1,224 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Main Body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../images/bg.jpg') no-repeat center center/cover;
+    position: relative;
+    overflow: hidden;
+}
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #121212; /* Track background color */
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #00c8ff; /* Scrollbar handle color */
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #0096cc; /* Darker color on hover */
+}
+/* Home Button */
+.home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 1000; /* Ensure it's above other elements */
+    cursor: pointer;
+}
+
+.home-button i {
+    font-size: 18px;
+}
+
+.home-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* Blurred Background Layer */
+.background-blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(15px);
+    z-index: 0;
+}
+
+/* Container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+/* Glassmorphism Form Box */
+.form-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    width: 400px;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Fade-in Slide-up Effect */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-box h2 {
+    color: #fff;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.form-box p {
+    color: #ddd;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* Links */
+.form-box a {
+    color: #00bfff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.form-box a:hover {
+    color: white;
+    text-shadow: 0 0 10px #00bfff;
+}
+
+/* Input Fields */
+form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+}
+
+/* Input Neon Glow Effect */
+form input:focus {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 8px #00bfff;
+    transform: scale(1.05);
+}
+
+/* Placeholder Styling */
+form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Submit Button */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #00bfff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 3D Hover Effect on Button */
+button:hover {
+    background: #009acd;
+    box-shadow: 0 0 12px #00bfff, 0 0 20px #00bfff;
+    transform: scale(1.05);
+}
+
+/* Social Login */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Google & Facebook Icons */
+.social-icons .google {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social-icons .fb {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: 0.3s;
+}
+
+/* Hover Effect for Social Icons */
+.social-icons img:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 10px #00bfff);
+}
+
