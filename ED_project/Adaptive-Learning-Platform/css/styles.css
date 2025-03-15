@@ -8,6 +8,28 @@ body {
     text-align: center;
 }
 
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #121212; /* Track background color */
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #00c8ff; /* Scrollbar handle color */
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #0096cc; /* Darker color on hover */
+}
+
 /* 🔹 Navbar */
 .navbar {
     display: flex;
@@ -138,81 +160,96 @@ body {
 
 
 
-
-/* 🔹 General Reset */
+/* General Styling */
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #121212;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #00c6ff, #1e1e1e);
     color: white;
     text-align: center;
+    margin: 0;
+    padding: 0;
+    transition: background 0.5s ease-in-out;
 }
 
-/* 🔹 Navbar */
+/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding: 15px 50px;
-    background: #1e1e1e;
     align-items: center;
+    padding: 15px 30px;
+    background: #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-}
-
-.nav-links li {
-    margin: 0 15px;
+    gap: 20px;
 }
 
 .nav-links a {
-    color: white;
     text-decoration: none;
+    color: white;
     font-weight: bold;
-    transition: 0.3s;
+    transition: color 0.3s ease-in-out;
 }
 
 .nav-links a:hover {
     color: #00c6ff;
+    transform: scale(1.1);
 }
 
-/* 🔹 Quiz Section */
+/* Quiz Container */
 .quiz-container {
-    margin-top: 40px;
-}
-
-.quiz-box {
-    background: #1e1e1e;
+    max-width: 600px;
+    margin: 50px auto;
+    background: #252525;
     padding: 20px;
-    border-radius: 10px;
-    width: 50%;
-    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 0.8s ease-in-out forwards;
 }
 
+/* Options Buttons */
 .options-container {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .option-btn {
+    padding: 12px;
     background: #00c6ff;
     border: none;
-    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
     cursor: pointer;
-    margin: 10px;
-    border-radius: 5px;
-    width: 150px;
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
 }
 
 .option-btn:hover {
-    background: #008bcd;
+    background: #0094cc;
+    transform: scale(1.05);
 }
 
-/* 🔹 Feedback Section */
+/* Timer */
+.timer {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffcc00;
+    transition: color 0.5s ease-in-out;
+}
+
+.timer:hover {
+    color: #ffd700;
+}
+
+/* Feedback Section */
 .feedback-container {
     margin-top: 30px;
     background: rgba(255, 255, 255, 0.1);
@@ -220,6 +257,7 @@ body {
     border-radius: 10px;
     width: 60%;
     margin: auto;
+    transition: all 0.5s ease-in-out;
 }
 
 #feedback-text {
@@ -227,13 +265,39 @@ body {
     font-weight: bold;
 }
 
-/* 🔹 Timer */
-.timer {
-    font-size: 18px;
-    margin-top: 20px;
-    color: #ffcc00;
+/* Buttons with Animation */
+.button {
+    padding: 12px 18px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    background: #00c6ff;
+    transition: all 0.3s ease-in-out;
 }
 
+.button:hover {
+    background: #0094cc;
+    transform: scale(1.1);
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hide Sections Initially */
+.hidden {
+    display: none;
+}
 
 
 
@@ -265,6 +329,7 @@ body {
     background: #121212;
     color: white;
     text-align: center;
+    transition: background 0.5s ease-in-out;
 }
 
 /* 🔹 Navbar */
@@ -274,6 +339,7 @@ body {
     padding: 15px 50px;
     background: #1e1e1e;
     align-items: center;
+    transition: background 0.3s ease;
 }
 
 .nav-links {
@@ -289,16 +355,37 @@ body {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .nav-links a:hover {
     color: #00c6ff;
+    transform: scale(1.1);
+}
+
+/* 🔹 Buttons */
+button {
+    background: #00c6ff;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: #009acd;
+    transform: scale(1.05);
 }
 
 /* 🔹 Progress Section */
 .progress-container {
     margin-top: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards;
 }
 
 .chart-container {
@@ -307,6 +394,11 @@ body {
     background: #1e1e1e;
     padding: 20px;
     border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.chart-container:hover {
+    transform: scale(1.02);
 }
 
 /* 🔹 Weak Areas */
@@ -316,6 +408,11 @@ body {
     border-radius: 10px;
     width: 60%;
     margin: 20px auto;
+    transition: transform 0.3s ease;
+}
+
+.weak-areas:hover {
+    transform: scale(1.02);
 }
 
 #weak-topics {
@@ -330,11 +427,18 @@ body {
     border-radius: 5px;
     color: black;
     font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+#weak-topics li:hover {
+    transform: scale(1.05);
 }
 
 /* 🔹 Achievements */
 .achievements {
     margin-top: 20px;
+    opacity: 0;
+    animation: fadeInUp 0.5s forwards;
 }
 
 .badge-container {
@@ -350,6 +454,23 @@ body {
     border-radius: 5px;
     color: black;
     font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.badge:hover {
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* 🔹 Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -378,6 +499,26 @@ body {
     background: #121212;
     color: white;
     text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+body.loaded {
+    opacity: 1;
+}
+/* 🔹 Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00c6ff;
+    text-shadow: 0px 0px 10px rgba(0, 198, 255, 0.8);
+    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    text-shadow: 0px 0px 15px rgba(0, 198, 255, 1);
+    cursor: pointer;
 }
 
 /* 🔹 Navbar */
@@ -402,11 +543,14 @@ body {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
+    transition: color 0.3s ease-in-out, transform 0.2s;
 }
 
 .nav-links a:hover {
     color: #00c6ff;
+    transform: scale(1.1);
+    text-shadow: 0px 0px 12px rgba(0, 198, 255, 1), 0px 0px 20px rgba(0, 198, 255, 0.8);
+    transition: transform 0.2s ease-in-out, text-shadow 0.3s ease-in-out;
 }
 
 /* 🔹 Study Materials Section */
@@ -422,6 +566,11 @@ body {
     border: none;
     border-radius: 5px;
     margin-bottom: 20px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+#searchBar:focus {
+    box-shadow: 0px 0px 10px rgba(0, 198, 255, 0.7);
 }
 
 /* 🔹 Material Cards */
@@ -438,11 +587,20 @@ body {
     border-radius: 10px;
     width: 250px;
     box-shadow: 0px 0px 10px rgba(0, 198, 255, 0.5);
-    transition: 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.material-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .material-card:hover {
     transform: scale(1.05);
+    box-shadow: 0px 0px 15px rgba(0, 198, 255, 0.7);
 }
 
 /* 🔹 Download Button */
@@ -454,10 +612,13 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    transition: background 0.3s ease-in-out, transform 0.2s, box-shadow 0.3s ease-in-out;
 }
 
 .download-btn:hover {
     background: #0094cc;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px rgba(0, 198, 255, 0.7);
 }
 
 
@@ -500,24 +661,39 @@ body {
     border-radius: 8px;
     color: white;
     text-align: left;
+    scroll-behavior: smooth; /* Smooth scrolling */
 }
 
 /* 🔹 User & AI Messages */
 .user-message, .bot-message {
     padding: 10px;
     border-radius: 5px;
-    margin: 5px 0;
+    margin: 10px 0;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.3s forwards ease-in-out;
 }
 
+/* 🔹 User Message */
 .user-message {
     background: #00c6ff;
     text-align: right;
     color: black;
 }
 
+/* 🔹 AI Message with Robot */
 .bot-message {
     background: #333;
     text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+}
+
+/* 🔹 Robot Icon for AI */
+.bot-message::before {
+    content: "🤖"; /* Robot emoji */
+    font-size: 20px;
 }
 
 /* 🔹 Input & Buttons */
@@ -542,8 +718,14 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    transition: transform 0.2s ease-in-out;
 }
 
+.chat-input button:hover {
+    transform: scale(1.1);
+}
+
+/* 🔹 Speak Answer Button */
 #speakAnswer {
     margin-top: 10px;
     padding: 8px;
@@ -552,7 +734,25 @@ body {
     border-radius: 5px;
     cursor: pointer;
     color: white;
+    transition: transform 0.2s ease-in-out;
 }
+
+#speakAnswer:hover {
+    transform: scale(1.1);
+}
+
+/* 🔹 Animation for New Messages */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 
 
