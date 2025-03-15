@@ -5,23 +5,70 @@ body {
     color: white;
     margin: 0;
     padding: 0;
+    transition: background 0.3s ease-in-out;
+    overflow:auto;
+    overflow-x: hidden;
+
+
+}
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #121212; /* Track background color */
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #00c8ff; /* Scrollbar handle color */
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #0096cc; /* Darker color on hover */
 }
 
 /* Navbar */
 .navbar {
+    height: 50px;
     display: flex;
     justify-content: space-between;
     padding: 20px 50px;
     background: rgba(0, 0, 0, 0.9);
     position: fixed;
-    width: 100%;
+    width: 95%;
     top: 0;
     z-index: 1000;
+    transition: background 0.3s ease-in-out;
+    border-radius: 30px;
+}
+.navbar:hover {
+    background: rgba(0, 0, 0, 1);
+}
+.logobrand img{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+ 
 }
 
 .logo {
+    color: cyan;
     font-size: 24px;
     font-weight: bold;
+    transition: color 0.3s;
+    margin-top: 14px;
+    margin-left: -50px;
+}
+.logo:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    text-shadow: 0px 0px 15px rgba(0, 198, 255, 1);
 }
 
 .nav-links {
@@ -34,18 +81,36 @@ body {
 }
 
 .nav-links a {
-    color: white;
+    color: rgba(231, 224, 224, 0.797);
+    font-weight: bolder;
     text-decoration: none;
+    transition: color 0.3s;
+    font-size: large;
 }
-
+.nav-links a:hover {
+    color: cyan;
+    font-size: larger;
+    text-shadow: 0px 0px 10px cyan;
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
 /* Hero Section */
 .hero {
     height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     background: url('../images/hero-bg.jpg') no-repeat center center/cover;
+    background-size: cover;
+    transition: transform 0.3s;
+    border-radius: 30px;
+
+    
+}
+.hero:hover {
+    transform: scale(1.02);
 }
 
 .hero-content h1 {
@@ -62,11 +127,17 @@ body {
     text-decoration: none;
     font-size: 18px;
     color: black;
+    transition: background 0.3s, transform 0.3s;
+}
+.cta-btn:hover {
+    transform: scale(1.05);
+    font-size: larger;
+    font-weight: bold;
 }
 
 /* Features */
 .features {
-    padding: 60px;
+    padding: 20px 60px 60px 60px;
     text-align: center;
 }
 
@@ -80,19 +151,73 @@ body {
     background: rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.feature-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
 }
 
 /* Testimonials */
 .testimonials {
-    padding: 50px;
+    padding: 10px 50px 50px 50px;
     text-align: center;
+}
+.testimonial-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 150px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.testimonial, .testimonial2 {
+    text-align: center;
+    width: 500px;
+    background-color:#1E1E1E;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.testimonial:hover, .testimonial2:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+    background-color: #292929; /* Slightly lighter on hover */
+}
+.testimonial img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    transition: transform 0.3s;
+}
+.testimonial img:hover {
+    transform: scale(1.1);
+}
+.testimonial2 img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    transition: transform 0.3s;
+}
+.testimonial2 img:hover {
+    transform: scale(1.1);
 }
 
 /* CTA */
 .cta {
-    background: #00c8ff;
+    background:  #029cd4;
     text-align: center;
     padding: 40px;
+    transition: background 0.3s;
+    border-radius: 30px;
+}
+.cta:hover {
+    background: #0082b1;
 }
 
 /* Footer */
@@ -108,12 +233,7 @@ body {
     display: block; /* Remove extra spacing */
     margin: 0 auto; /* Center within card */
 }
-.testimonial img {
-    width: 80px;  /* Keep a uniform size */
-    height: 80px;
-    border-radius: 50%; /* Circular images */
-    object-fit: cover; /* Ensures image fills space properly */
-}
+
 
 .hero {
     height: 100vh;
@@ -123,6 +243,15 @@ body {
     text-align: center;
     background: url('../images/hero-bg.jpg') no-repeat center center/cover;
     background-size: cover;
+}
+footer a{
+    font-weight: bold;
+    color: #c0bfbf;
+    text-decoration: none;
+}
+footer a:hover{
+    font-size: large;
+    color: white;
 }
 
 .social-icons {
@@ -135,15 +264,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px; /* Fixed size */
+    width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-    transition: 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background 0.3s, transform 0.3s;
 }
 
 .social-icons a:hover {
-    background: rgba(255, 255, 255, 0.3); /* Highlight effect */
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
 }
 
 .social-icons img {
@@ -154,6 +284,14 @@ img {
     max-width: 100%; /* Prevents images from overflowing */
     height: auto; /* Maintains aspect ratio */
     display: block;
+    transition: transform 0.3s;
 }
-
+img:hover {
+    transform: scale(1.05);
+}
+@media(max-width:1030px){
+    .logo{
+        display: none;
+    }
+}
 
