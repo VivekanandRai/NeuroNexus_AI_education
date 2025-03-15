@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Progress Dashboard | AI Learning</title>
+    <title>Performance Dashboard | AI Learning</title>
     <link rel="stylesheet" href="css/styles.css">
     <script defer src="js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js for Graphs -->
@@ -22,11 +22,15 @@
         </ul>
     </nav>
 
-    <!-- 🔹 Progress Section -->
-    <section class="progress-container">
-        <h1>📈 AI-Powered Progress Insights</h1>
+    <!-- 🔹 Performance Summary -->
+    <section class="performance-container">
+        <h1>📊 Quiz Performance</h1>
+        <div class="score-box">
+            <h2>Your Score: <span id="score-text"></span> / <span id="total-questions"></span></h2>
+            <p id="performance-message">Analyzing...</p>
+        </div>
 
-        <!-- 🔹 Progress Chart -->
+        <!-- 🔹 Performance Chart -->
         <div class="chart-container">
             <canvas id="progressChart"></canvas>
         </div>
@@ -42,12 +46,12 @@
         <!-- 🔹 Achievements & Badges -->
         <div class="achievements">
             <h2>🏆 Achievements</h2>
-            <div class="badge-container">
-                <div class="badge">Beginner</div>
-                <div class="badge">Quiz Master</div>
-                <div class="badge">AI Learner</div>
+            <div class="badge-container" id="badge-container">
+                <!-- Badges will be added dynamically -->
             </div>
         </div>
+
+        <button onclick="window.location.href='quiz.html'">Retry Quiz</button>
     </section>
 
 </body>
