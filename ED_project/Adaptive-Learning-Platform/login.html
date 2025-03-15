@@ -6,8 +6,10 @@
     <title>Login | Adaptive Learning</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
+    <a href="index.html" class="home-button"><i class="fa-solid fa-house"></i>Home</a> 
 
     <div class="container">
         <div class="form-box">
@@ -15,7 +17,9 @@
 
             <!-- Toggle Between Login & Signup -->
             <p class="toggle-text">
-                <span id="toggle-btn">Don't have an account? <strong>Sign Up</strong></span>
+                <span id="toggle-btn">
+                    Don't have an account? <a href="signup.html"><strong>Sign Up</strong></a>
+                </span>
             </p>
 
             <form id="auth-form">
@@ -43,8 +47,8 @@
 
                 <p class="social-text">Or continue with</p>
                 <div class="social-icons">
-                    <a href="#"><img src="images/google.png" alt="Google"></a>
-                    <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img class="google" src="images/glog.webp" alt="Google"></a>
+                    <a href="#"><img class="fb" src="images/fblog.png" alt="Facebook"></a>
                 </div>
             </form>
         </div>
