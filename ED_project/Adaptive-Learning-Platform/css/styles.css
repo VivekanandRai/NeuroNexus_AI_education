@@ -171,6 +171,23 @@ body {
     transition: background 0.5s ease-in-out;
 }
 
+/* Progress Header */
+#progress-header {
+    position: fixed;
+    width: 160px;
+    top: 20px;
+    right: 10px;
+    background: rgba(37, 37, 37, 0.9);
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 198, 255, 0.3);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    font-weight: bold;
+    font-size: small;
+    transition: all 0.3s ease-in-out;
+}
+
 /* Navbar */
 .navbar {
     display: flex;
@@ -189,15 +206,19 @@ body {
 }
 
 .nav-links a {
+    color: rgba(231, 224, 224, 0.74);
+    font-weight: bolder;
     text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
+    transition: color 0.3s;
+    font-size: large;
 }
 
 .nav-links a:hover {
-    color: #00c6ff;
+    color: cyan;
+    font-size: large;
+    text-shadow: 0px 0px 10px cyan;
     transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
 }
 
 /* Home Button */
@@ -227,7 +248,6 @@ body {
     transform: scale(1.1);
 }
 
-
 /* Quiz Container */
 .quiz-container {
     max-width: 600px;
@@ -239,6 +259,20 @@ body {
     opacity: 0;
     transform: translateY(-20px);
     animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+/* Question Header */
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding: 0 15px;
+    color: #00c6ff;
+}
+
+#question-status {
+    color: #ffcc00;
+    font-size: 0.9em;
 }
 
 /* Options Buttons */
@@ -293,6 +327,95 @@ body {
     font-weight: bold;
 }
 
+/* Review Page */
+#review-page {
+    max-width: 600px;
+    margin: 80px auto;
+    background: #252525;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+#answers-review div {
+    padding: 15px;
+    margin: 15px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 4px solid #00c6ff;
+    transition: all 0.3s ease-in-out;
+}
+
+/* User Answer Style */
+.user-answer {
+    color: #00c6ff;
+    font-style: italic;
+    margin-top: 5px;
+    display: inline-block;
+    padding: 5px 10px;
+    background: rgba(0, 198, 255, 0.1);
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+}
+
+.user-answer:hover {
+    background: rgba(0, 198, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.review-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.review-buttons button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.review-buttons button:first-child {
+    background: #ffcc00;
+    color: #1e1e1e;
+}
+
+.review-buttons button:last-child {
+    background: #00c6ff;
+    color: white;
+}
+
+.review-buttons button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Progress Page */
+#progress-page {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 40px;
+    background: #252525;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.progress-loader {
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top: 5px solid #00c6ff;
+    width: 60px;
+    height: 60px;
+    margin: 30px auto;
+    animation: spin 1s linear infinite;
+}
+
 /* Buttons with Animation */
 .button {
     padding: 12px 18px;
@@ -322,9 +445,14 @@ body {
     }
 }
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 /* Hide Sections Initially */
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 
@@ -380,15 +508,19 @@ body {
 }
 
 .nav-links a {
-    color: white;
+    color: rgba(231, 224, 224, 0.74);
+    font-weight: bolder;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease, transform 0.2s ease;
+    transition: color 0.3s;
+    font-size: large;
 }
 
 .nav-links a:hover {
-    color: #00c6ff;
+    color: cyan;
+    font-size: large;
+    text-shadow: 0px 0px 10px cyan;
     transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
 }
 
 /* 🔹 Buttons */
@@ -417,7 +549,7 @@ button:hover {
 }
 
 .chart-container {
-    width: 60%;
+    width: 45%;
     margin: auto;
     background: #1e1e1e;
     padding: 20px;
@@ -822,8 +954,11 @@ body {
 }
 
 .nav-links a {
-    color: #00c6ff;
+    color: rgba(231, 224, 224, 0.74);
+    font-weight: bolder;
     text-decoration: none;
+    transition: color 0.3s;
+    font-size: large;
 }
 
 /* 🔹 Sections */
