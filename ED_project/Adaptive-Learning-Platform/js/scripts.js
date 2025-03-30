@@ -98,97 +98,196 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         }
     };
-
+    
     let selectedClass = null;
     let selectedDifficulty = null;
     let currentQuestionIndex = 0;
     let questions = [];
     let timeLeft = 30;
     let timerInterval;
+    let score = 0;
+    let userAnswers = [];
+    let totalQuestions = 0;
 
+    // 📌 Function to save quiz results in history
+    function saveQuizResult() {
+        let quizHistory = JSON.parse(localStorage.getItem("quizHistory")) || [];
+    
+        quizHistory.push({
+            class: selectedClass,
+            difficulty: selectedDifficulty,
+            score: score,
+            total: totalQuestions,
+            timestamp: new Date().toISOString()
+        });
+    
+        localStorage.setItem("quizHistory", JSON.stringify(quizHistory));
+    }
+    
+    // Progress Tracking
+    function updateProgress() {
+        const attempted = userAnswers.filter(a => a !== null).length;
+        document.getElementById("attempted-count").textContent = attempted;
+        document.getElementById("remaining-count").textContent = totalQuestions - attempted;
+        document.getElementById("question-number").textContent = `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
+    }
+    
     // Step 1: Choose Class
     function setClass(classLevel) {
         selectedClass = `Class ${classLevel}`;
         document.getElementById("class-selection").style.display = "none";
         document.getElementById("difficulty-selection").style.display = "block";
     }
-
+    
     // Step 2: Choose Difficulty
     function setDifficulty(difficulty) {
         selectedDifficulty = difficulty;
         document.getElementById("difficulty-selection").style.display = "none";
         document.getElementById("quiz-container").style.display = "block";
-
+        document.getElementById("progress-header").classList.remove("hidden");
+    
         questions = quizData[selectedClass][selectedDifficulty];
         if (!questions) {
             alert("No questions found!");
             return;
         }
-
+    
+        totalQuestions = questions.length;
+        userAnswers = new Array(totalQuestions).fill(null);
+        updateProgress();
         loadQuestion();
     }
-
+    
     function loadQuestion() {
         if (currentQuestionIndex >= questions.length) {
-            // Redirect to performance page after last question
-            window.location.href = `progress.html?score=${score}&total=${questions.length}`;
+            showReviewPage();
             return;
         }
-
+    
         let q = questions[currentQuestionIndex];
-
+    
         document.getElementById("quiz-question").innerText = q.question;
         document.getElementById("option1").innerText = q.options[0];
         document.getElementById("option2").innerText = q.options[1];
         document.getElementById("option3").innerText = q.options[2];
         document.getElementById("option4").innerText = q.options[3];
-
+    
         timeLeft = 30;
         clearInterval(timerInterval);
         timerInterval = setInterval(updateTimer, 1000);
+        updateProgress();
     }
-
+    
     // Timer
     function updateTimer() {
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            alert("Time's up!");
+            userAnswers[currentQuestionIndex] = null; // Mark as unanswered
             nextQuestion();
         } else {
             document.getElementById("timer").innerText = timeLeft;
             timeLeft--;
         }
     }
-
-    let score = 0; // Initialize Score
-
+    
     // Check Answer
     function checkAnswer(choice) {
+        clearInterval(timerInterval);
+        
         let correctAnswer = questions[currentQuestionIndex].answer;
-        let feedback = document.getElementById("feedback-text");
-
         if (choice === correctAnswer) {
-            feedback.innerText = "✅ Correct!";
-            score++; // Increment score when correct
-        } else {
-            feedback.innerText = "❌ Wrong!";
+            score++; // Increment score if correct
         }
+    
+        userAnswers[currentQuestionIndex] = choice; // Store user's answer
+        updateProgress();
         nextQuestion();
     }
-
+    
     function nextQuestion() {
         currentQuestionIndex++;
-        loadQuestion();
+        if (currentQuestionIndex < totalQuestions) {
+            loadQuestion();
+        } else {
+            showReviewPage();
+        }
     }
+    
+    // Review Page Functions
+    function showReviewPage() {
+        clearInterval(timerInterval);
+        
+        const reviewContainer = document.getElementById("answers-review");
+        reviewContainer.innerHTML = "";
+        
+        questions.forEach((q, index) => {
+            const div = document.createElement("div");
+            const userAnswer = userAnswers[index];
+            const answerText = userAnswer !== null ? q.options[userAnswer] : "Not answered";
+            const isCorrect = userAnswer === q.answer;
+    
+            div.innerHTML = `
+                <strong>Q${index + 1}:</strong> ${q.question}<br>
+                <span class="user-answer ${isCorrect ? 'correct' : 'incorrect'}">
+                    Your Answer: ${answerText}
+                </span><br>
+            `;
+            reviewContainer.appendChild(div);
+        });
+    
+        document.getElementById("quiz-container").classList.add("hidden");
+        document.getElementById("progress-header").classList.add("hidden");
+        document.getElementById("review-page").classList.remove("hidden");
+    }
+    
+    function submitQuiz() {
+        saveQuizResult(); // ✅ Save history before redirecting
 
+        const answersData = questions.map((q, index) => ({
+            question: q.question,
+            correctAnswer: q.options[q.answer], // Correct answer
+            userAnswer: userAnswers[index] // User's given answer
+        }));
+    
+        const encodedAnswers = encodeURIComponent(JSON.stringify(answersData));
+    
+        window.location.href = `progress.html?score=${score}&total=${totalQuestions}&answers=${encodedAnswers}`;
+    }
+    
+    // Event Listeners
     document.getElementById("option1").addEventListener("click", () => checkAnswer(0));
     document.getElementById("option2").addEventListener("click", () => checkAnswer(1));
     document.getElementById("option3").addEventListener("click", () => checkAnswer(2));
     document.getElementById("option4").addEventListener("click", () => checkAnswer(3));
-
+    
     window.setClass = setClass;
     window.setDifficulty = setDifficulty;
+    window.submitQuiz = submitQuiz;
 });
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     let quizHistory = JSON.parse(localStorage.getItem("quizHistory")) || [];
+//     const historyContainer = document.getElementById("quiz-history");
+
+//     if (quizHistory.length === 0) {
+//         historyContainer.innerHTML = "<p>No quiz history available.</p>";
+//         return;
+//     }
+
+//     quizHistory.forEach((quiz, index) => {
+//         let div = document.createElement("div");
+//         div.classList.add("history-item");
+//         div.innerHTML = `
+//             <strong>Attempt ${index + 1}:</strong> <br>
+//             Class: ${quiz.class} <br>
+//             Difficulty: ${quiz.difficulty} <br>
+//             Score: ${quiz.score} / ${quiz.total} <br>
+//             Date: ${new Date(quiz.timestamp).toLocaleString()}
+//             <hr>
+//         `;
+//         historyContainer.appendChild(div);
+//     });
+// });
 
 
 
@@ -198,96 +297,93 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
-    const score = parseInt(urlParams.get("score")) || 0;
-    const total = parseInt(urlParams.get("total")) || 1;
+    const score = parseInt(urlParams.get('score')) || 0;
+    const total = parseInt(urlParams.get('total')) || 0;
+    const correctAnswersData = JSON.parse(urlParams.get('answers') || "[]");
 
-    // Display score
-    document.getElementById("score-text").innerText = score;
-    document.getElementById("total-questions").innerText = total;
-
-    // Calculate performance
-    const percentage = (score / total) * 100;
-    let performanceMessage = "Keep improving! 💪";
-
-    if (percentage >= 80) {
-        performanceMessage = "Excellent Work! 🎉";
-    } else if (percentage >= 50) {
-        performanceMessage = "Good job! Keep practicing! ✅";
-    } else {
-        performanceMessage = "You need more practice! 📚";
-    }
-
-    document.getElementById("performance-message").innerText = performanceMessage;
-
-    // Store performance in localStorage for tracking
-    let quizHistory = JSON.parse(localStorage.getItem("quizHistory")) || [];
-    quizHistory.push({ score, total, percentage });
-    localStorage.setItem("quizHistory", JSON.stringify(quizHistory));
-
-    // Update weak areas
+    const scoreText = document.getElementById("score-text");
+    const totalQuestions = document.getElementById("total-questions");
+    const performanceMessage = document.getElementById("performance-message");
     const weakTopics = document.getElementById("weak-topics");
-    weakTopics.innerHTML = "";
-    
-    if (percentage < 50) {
-        weakTopics.innerHTML = `<li>Focus on revising key concepts 📖</li>`;
-    } else if (percentage < 80) {
-        weakTopics.innerHTML = `<li>Review past mistakes for better accuracy! 🎯</li>`;
-    } else {
-        weakTopics.innerHTML = `<li>You're doing great! Aim for perfection! 🚀</li>`;
-    }
-
-    // Display progress graph
-    displayProgressChart(quizHistory);
-
-    // Unlock achievements
-    unlockAchievements(percentage);
-});
-
-// Function to display progress chart
-function displayProgressChart(history) {
-    const ctx = document.getElementById("progressChart").getContext("2d");
-    const labels = history.map((_, index) => `Quiz ${index + 1}`);
-    const scores = history.map((entry) => entry.percentage);
-
-    new Chart(ctx, {
-        type: "line",
-        data: {
-            labels: labels,
-            datasets: [{
-                label: "Performance (%)",
-                data: scores,
-                borderColor: "rgba(75, 192, 192, 1)",
-                backgroundColor: "rgba(75, 192, 192, 0.2)",
-                borderWidth: 2
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: { beginAtZero: true, max: 100 }
-            }
-        }
-    });
-}
-
-// Function to unlock achievements
-function unlockAchievements(percentage) {
     const badgeContainer = document.getElementById("badge-container");
-    badgeContainer.innerHTML = ""; // Clear previous badges
+    const reviewSection = document.querySelector(".answers-review");
+    const reviewContainer = document.getElementById("answers-review");
+    const progressChart = document.getElementById("progressChart");
 
-    if (percentage >= 80) {
-        badgeContainer.innerHTML += `<div class="badge">Quiz Master 🏅</div>`;
+    if (scoreText && totalQuestions) {
+        scoreText.textContent = score;
+        totalQuestions.textContent = total;
     }
-    if (percentage >= 50) {
-        badgeContainer.innerHTML += `<div class="badge">Smart Learner 📚</div>`;
-    }
-    if (percentage < 50) {
-        badgeContainer.innerHTML += `<div class="badge">Keep Practicing! 💪</div>`;
-    }
-}
 
+    if (performanceMessage) {
+        performanceMessage.innerHTML =
+            score === total ? "🎉 Excellent! You got all answers correct!"
+            : score >= total * 0.7 ? "👏 Great job! Keep practicing!"
+            : score >= total * 0.5 ? "🙂 Good effort! Try to improve!"
+            : "😕 Needs improvement. Review the topics!";
+    }
 
+    if (progressChart && typeof Chart !== 'undefined') {
+        const ctx = progressChart.getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Correct', 'Incorrect'],
+                datasets: [{
+                    data: [score, total - score],
+                    backgroundColor: ['#4CAF50', '#FF5733'],
+                }]
+            }
+        });
+    } else {
+        console.warn("Chart.js is not loaded or canvas element missing!");
+    }
+
+    if (weakTopics) {
+        weakTopics.innerHTML = (total - score > total * 0.3)
+            ? "<li>Focus on key concepts and try again!</li>"
+            : "<li>Great job! No major weak areas detected.</li>";
+    }
+
+    if (badgeContainer) {
+        badgeContainer.innerHTML =
+            score === total ? "<span class='badge'>🏅 Perfect Score!</span>"
+            : score >= total * 0.7 ? "<span class='badge'>🔥 High Scorer!</span>"
+            : score >= total * 0.5 ? "<span class='badge'>👍 Good Effort!</span>"
+            : "<span class='badge'>📚 Keep Practicing!</span>";
+    }
+
+    // ✅ Answer Review Section with Selected Option Name
+    if (reviewSection && reviewContainer) {
+        if (total > 0) {
+            reviewSection.style.display = "block";
+            reviewContainer.innerHTML = "";
+
+            correctAnswersData.forEach((item, index) => {
+                if (!item.question || !item.correctAnswer) return;
+
+                const isCorrect = String(item.userAnswer).trim().toLowerCase() === String(item.correctAnswer).trim().toLowerCase();
+
+                const div = document.createElement("div");
+                div.classList.add("answer-item", isCorrect ? "correct" : "incorrect");
+
+                const selectedOptionText = item.selectedOptionText ? `(${item.selectedOptionText})` : "";
+
+                div.innerHTML = `
+                    <p><strong>Q${index + 1}:</strong> ${item.question}</p>
+                    <p class="correct-answer">✅ Correct Answer: ${item.correctAnswer}</p>
+                    <p class="user-answer ${isCorrect ? 'correct-text' : 'incorrect-text'}">
+                        📝 Your Answer: ${item.userAnswer} ${selectedOptionText}
+                    </p>
+                `;
+
+                reviewContainer.appendChild(div);
+            });
+        } else {
+            reviewSection.style.display = "none";
+        }
+    }
+});
 
 
 
@@ -515,7 +611,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
 
 
 
