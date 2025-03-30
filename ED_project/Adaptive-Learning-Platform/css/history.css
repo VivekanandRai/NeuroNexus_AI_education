@@ -1,0 +1,109 @@
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* History Container */
+.history-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #252525;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* History List */
+#history-list {
+    margin-top: 20px;
+    text-align: left;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Individual Quiz Entry */
+.quiz-entry {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 5px solid #00c6ff;
+    transition: all 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fadeInScale 0.5s ease-out forwards;
+}
+
+.quiz-entry:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.03);
+    box-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+}
+
+/* Clear History Button */
+#clear-history {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: red;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#clear-history:hover {
+    background: darkred;
+    transform: scale(1.07);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+/* Back to Home Button */
+.back-home {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #00c6ff;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.back-home:hover {
+    background: #0094cc;
+    transform: scale(1.07);
+    box-shadow: 0 0 10px rgba(0, 198, 255, 0.6);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
