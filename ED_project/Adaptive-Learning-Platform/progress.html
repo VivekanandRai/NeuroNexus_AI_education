@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Performance Dashboard | AI Learning</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script defer src="js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js for Graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js first -->
+    <script defer src="js/scripts.js"></script> <!-- Ensure scripts load properly -->
 </head>
 <body>
 
     <!-- 🔹 Navbar -->
     <nav class="navbar">
-        <div class="logo">Neural Learn</div>
+        <div class="logo">NeuroNexus</div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
@@ -26,13 +26,19 @@
     <section class="performance-container">
         <h1>📊 Quiz Performance</h1>
         <div class="score-box">
-            <h2>Your Score: <span id="score-text"></span> / <span id="total-questions"></span></h2>
+            <h2>Your Score: <span id="score-text">0</span> / <span id="total-questions">0</span></h2>
             <p id="performance-message">Analyzing...</p>
         </div>
 
         <!-- 🔹 Performance Chart -->
         <div class="chart-container">
             <canvas id="progressChart"></canvas>
+        </div>
+
+        <!-- ✅ Correct Answers & User Answers -->
+        <div class="answers-review" id="review-section" style="display: none;">
+            <h2>✅ Answer Review</h2>
+            <div id="answers-review"></div>
         </div>
 
         <!-- 🔹 Weak Areas & Study Suggestions -->
@@ -51,7 +57,10 @@
             </div>
         </div>
 
-        <button onclick="window.location.href='quiz.html'">Retry Quiz</button>
+        <!-- 🔄 Retry Button -->
+        <div class="retry-section">
+            <button onclick="window.location.href='quiz.html'"> Retry Quiz </button>
+        </div>
     </section>
 
 </body>
