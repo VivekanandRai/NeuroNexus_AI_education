@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap & Time Management</title>
+    <link rel="stylesheet" href="road.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            width: 80%;
+        }
+        .left-panel, .right-panel {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+        }
+        button {
+            background-color: #ff4081;
+            border: none;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e60073;
+        }
+        table, ul {
+            width: 100%;
+            margin-top: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Time Management Dashboard</h1>
+    <div class="container">
+        <div class="left-panel">
+            <!-- Pomodoro Timer -->
+            <section id="pomodoro">
+                <h2>Pomodoro Timer</h2>
+                <p id="timer-display">25:00</p>
+                <button onclick="startTimer()">Start</button>
+                <button onclick="resetTimer()">Reset</button>
+            </section>
+
+            <!-- Time Table Maker -->
+            <section id="timetable">
+                <h2>Time Table Maker</h2>
+                <input type="text" id="subject" placeholder="Enter Subject">
+                <input type="time" id="start-time">
+                <input type="time" id="end-time">
+                <button onclick="addTimetableEntry()">Add Entry</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="timetable-body"></tbody>
+                </table>
+            </section>
+        </div>
+        
+        <div class="right-panel">
+            <!-- Roadmap Chart -->
+            <section id="roadmap">
+                <h2>Roadmap Maker</h2>
+                <input type="text" id="milestone" placeholder="Enter milestone">
+                <button onclick="addMilestone()">Add Milestone</button>
+                <ul id="roadmap-list"></ul>
+            </section>
+        </div>
+    </div>
+    
+    <script>
+        let timer;
+        let timeLeft = 1500; // 25 minutes in seconds
+        let running = false;
+
+        function startTimer() {
+            if (!running) {
+                running = true;
+                timer = setInterval(() => {
+                    if (timeLeft > 0) {
+                        timeLeft--;
+                        updateDisplay();
+                    } else {
+                        clearInterval(timer);
+                        running = false;
+                    }
+                }, 1000);
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timer);
+            timeLeft = 1500;
+            running = false;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            document.getElementById("timer-display").innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        function addTimetableEntry() {
+            let subject = document.getElementById("subject").value;
+            let startTime = document.getElementById("start-time").value;
+            let endTime = document.getElementById("end-time").value;
+            if (subject && startTime && endTime) {
+                let row = `<tr>
+                    <td>${subject}</td>
+                    <td>${startTime}</td>
+                    <td>${endTime}</td>
+                    <td><button onclick="removeEntry(this)">Delete</button></td>
+                </tr>`;
+                document.getElementById("timetable-body").innerHTML += row;
+            }
+        }
+
+        function removeEntry(btn) {
+            btn.parentElement.parentElement.remove();
+        }
+
+        function addMilestone() {
+            let milestoneText = document.getElementById("milestone").value;
+            if (milestoneText) {
+                let li = document.createElement("li");
+                li.innerText = milestoneText;
+                let deleteBtn = document.createElement("button");
+                deleteBtn.innerText = "Delete";
+                deleteBtn.onclick = function () { li.remove(); };
+                li.appendChild(deleteBtn);
+                document.getElementById("roadmap-list").appendChild(li);
+                document.getElementById("milestone").value = "";
+            }
+        }
+    </script>
+</body>
+</html>
